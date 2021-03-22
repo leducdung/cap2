@@ -1,16 +1,17 @@
 import { forwardRef, Module } from '@nestjs/common'
 import { TestModule } from './test/test.module'
 import { ConfigModule } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import { OAuthGoogleModule } from './o-auth-google/o-auth-google.module';
 import { UsersModule } from './users/users.module';
 import { StoreOwnersModule } from './storeOwners/storeOwners.module';
 import { EmployeesModule } from './employees/employees.module';
-import { ProductsModule } from './\bproducts/products.module';
+import { ProductsModule } from './products/products.module';
 
 
 export const myAppImPortModules = [
-  ConfigModule.forRoot(),
+  ConfigModule.forRoot({
+    isGlobal: true,
+  }),
   forwardRef(() => TestModule),
   forwardRef(() => OAuthGoogleModule),
   forwardRef(() => UsersModule),
