@@ -6,13 +6,14 @@ import { UsersModule } from './domains/users/users.module';
 import { StoreOwnersModule } from './domains/storeOwners/storeOwners.module'
 import { EmployeesModule } from './domains/employees/employees.module';
 import { ProductsModule } from './domains/\bproducts/products.module';
+import { CommentAndRatingsModule } from './domains/commentAndRatings/commentAndRatings.module';
 
 async function bootstrap(){
   const app = await NestFactory.create(MyAppModule);
 
   const options =new DocumentBuilder()
-  .setTitle('Cats example')
-  .setDescription('The cats API description')
+  .setTitle('OpenAPI HomeMarket')
+  .setDescription('HomeMarket API description')
   .setVersion('1.0')
   .addTag('HomeMarket')
   .build();
@@ -23,10 +24,11 @@ async function bootstrap(){
         StoreOwnersModule,
         EmployeesModule,
         ProductsModule,
+        CommentAndRatingsModule,
       ],
   });
   SwaggerModule.setup('api', app, apiDocument);
-    await app.listen(process.env.PORT, '0.0.0.0', function() {
+    await app.listen(process.env.PORT || 3000, '0.0.0.0', function() {
       console.log("Server started.......")
     });
 }

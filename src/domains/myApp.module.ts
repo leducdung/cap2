@@ -6,7 +6,7 @@ import { UsersModule } from './users/users.module';
 import { StoreOwnersModule } from './storeOwners/storeOwners.module';
 import { EmployeesModule } from './employees/employees.module';
 import { ProductsModule } from './products/products.module';
-
+import { CommentAndRatingsModule } from './commentAndRatings/commentAndRatings.module';
 
 export const myAppImPortModules = [
   ConfigModule.forRoot({
@@ -18,6 +18,8 @@ export const myAppImPortModules = [
   forwardRef(() => StoreOwnersModule),
   forwardRef(() => EmployeesModule),
   forwardRef(() => ProductsModule),
+  forwardRef(() => CommentAndRatingsModule),
+
 ]
 
 @Module({
