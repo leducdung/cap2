@@ -30,8 +30,10 @@ export class ProductsService {
   }
 
 
-  async findOneStoreOwner(query): Promise<Products | string> {
+  async findProduct(query): Promise<Products | string> {
     try {
+      console.log(query);
+
       const product = await this.productModel.findOne(query).populate('storeOwnerID').exec()
 
       if ( !product)  {
@@ -57,10 +59,11 @@ export class ProductsService {
     }
   }
 
-  async updateOne({ data, _id}): Promise<Products | string> {
+  async updateOne({ data, query}): Promise<Products | string> {
     try {
+      
+      const product = await this.productModel.findOne(query).populate('storeOwnerID').exec()
 
-      const product = await this.productModel.findOne(_id).exec()
 
       if(!product){
         return 'Product Not Found'

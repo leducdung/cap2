@@ -20,6 +20,7 @@ export const ProductsSchema = new mongoose.Schema({
   quantitySold: { type: Number, default: null},
   calories: { type: String, default: null},
   createdBy: { type: ObjectId, ref:  'Users'},
+  storeOwnerID: { type: ObjectId, ref:  'Store_Owners'},
 }, {
   timestamps: true,
 })

@@ -42,6 +42,12 @@ export class CreateProductDto {
   @ApiPropertyOptional()
   readonly calories?: string
 
+  @ApiPropertyOptional()
+  readonly createdBy?: Types.ObjectId
+
+  @ApiPropertyOptional()
+  readonly storeOwnerID?: Types.ObjectId
+
 }
 
 export class DataUpdateProductDto {
@@ -135,5 +141,5 @@ export class FindManyProductDto {
 
   @ApiPropertyOptional()
   readonly calories?: string
-
+  
 }

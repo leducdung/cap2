@@ -15,6 +15,7 @@ export interface Products extends Document {
   quantitySold?: string
   calories?: string
   createdBy?: Types.ObjectId
+  storeOwnerID?: Types.ObjectId
   createdAt?: Date
   updatedAt?: Date
 }

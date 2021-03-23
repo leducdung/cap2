@@ -17,7 +17,9 @@ export class UsersService {
 
   async findOne({ data }: any): Promise<Users> {
     try {
-      const a = await this.usersModel.findOne(data).exec()
+      const a = await this.usersModel.findOne(data)
+      .populate('storeOwnerID')
+        .populate('employeeID').exec()
       return a
     } catch (error) {
       return Promise.reject(error)

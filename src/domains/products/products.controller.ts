@@ -32,14 +32,13 @@ export class ProductsController {
 
 
   @UseGuards(JwtAuthGuard)
-  @Get(':_id')
+  @Get(':productID')
   async findOne(
-    @Param() _id ,
+    @Param() productID ,
     @Request() req
   ) {
     try {
-
-      return this.productsService.findOneStoreOwner(_id)
+      return this.productsService.findProduct({_id:productID.productID})
 
     } catch (error) {
       throw error
@@ -52,35 +51,43 @@ export class ProductsController {
     @Body() createProductDto : CreateProductDto,
     @Request() req
   ) {
+    console.log(req.user.resultUser);
+
     try {
-      return this.productsService.createOne({data:createProductDto})
+      return this.productsService.createOne({
+        data:{
+          ...createProductDto,
+          createdBy:req.user.resultUser._id,
+          storeOwnerID:req.user.resultUser.storeOwnerID._id,
+        }
+        })
     } catch (error) {
       throw error
     }
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':_id')
+  @Delete(':productID')
   async Delete(
-    @Param() _id ,
+    @Param() productID ,
     @Request() req
   ) {
     try {
-      return this.productsService.deleteOne(_id)
+      return this.productsService.deleteOne({_id:productID.productID})
     } catch (error) {
       throw error
     }
   }
 
   @UseGuards(JwtAuthGuard)
-  @Put(':_id')
+  @Put(':productID')
   async updateOne(
-    @Param() _id ,
+    @Param() productID ,
     @Body() data ,
     @Request() req
   ) {
     try {
-      return this.productsService.updateOne({data,_id})
+      return this.productsService.updateOne({data, query:{_id:productID.productID}})
     } catch (error) {
       throw error
     }
