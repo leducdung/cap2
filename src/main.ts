@@ -7,6 +7,7 @@ import { StoreOwnersModule } from './domains/storeOwners/storeOwners.module'
 import { EmployeesModule } from './domains/employees/employees.module';
 import { ProductsModule } from './domains/\bproducts/products.module';
 import { CommentAndRatingsModule } from './domains/commentAndRatings/commentAndRatings.module';
+import { NoticationsModule } from './domains/notications/notications.module';
 
 async function bootstrap(){
   const app = await NestFactory.create(MyAppModule);
@@ -25,6 +26,7 @@ async function bootstrap(){
         EmployeesModule,
         ProductsModule,
         CommentAndRatingsModule,
+        NoticationsModule,
       ],
   });
   SwaggerModule.setup('api', app, apiDocument);
