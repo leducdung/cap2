@@ -52,10 +52,10 @@ export class UsersService {
     }
   }
 
-  async updateOne({ data, _id }): Promise<Users | string> {
+  async updateOne({ data, query }): Promise<Users | string> {
     try {
 
-      const user = await this.usersModel.findOne(_id)
+      const user = await this.usersModel.findOne(query)
         .populate('storeOwnerID')
         .populate('employeeID')
         .exec()
@@ -94,7 +94,7 @@ export class UsersService {
 
   async findMany({ query }) {
     try {
-      const { limit = 10, sortBy = '_id', offset = 0, ...queryWithoutSortByAndLimit } = query
+      const { limit = 10, sortBy = 'query', offset = 0, ...queryWithoutSortByAndLimit } = query
 
       const promises = []
 

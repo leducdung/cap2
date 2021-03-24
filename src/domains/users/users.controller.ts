@@ -1,8 +1,13 @@
-import { Controller, Get, Request, Post, UseGuards,Body , Put , Param, Query} from '@nestjs/common';
+import { Controller, Get, Request, Post, UseGuards, Body, Put, Param, Query } from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/jwt/jwt-auth.guard';
 import { LocalAuthGuard } from '../../auth/local/local-auth.guard';
 import { AuthService } from '../../auth/auth.service';
-import { CreateUserDto } from './model/users.dto';
+import {
+  CreateUserDto,
+  FindManyDocumentsDto,
+  ParamUserDto,
+  DataUpdateUserDto,
+} from './model/users.dto';
 import { ApiTags } from '@nestjs/swagger'
 import { UsersService } from './users.service';
 import { UsersCombinedService } from './users.combined.service';
@@ -15,14 +20,14 @@ export class UsersController {
     private readonly usersService: UsersService,
     private authService: AuthService,
     private readonly usersCombinedService: UsersCombinedService,
-) { }
+  ) { }
 
   @UseGuards(JwtAuthGuard)
   @Get('profile/findMany')
   async findMany(
-    @Query() query,
+    @Query() query : FindManyDocumentsDto,
     @Request() { req },
-  ){
+  ) {
     try {
       const users = await this.usersService.findMany({
         query,
@@ -39,27 +44,24 @@ export class UsersController {
   async createOne(
     @Body() CreateUserDto: CreateUserDto,
     @Request() { user },
-  ){
+  ) {
     try {
 
-      const saltOrRounds = await 10;
-
-      const hash = await bcrypt.hash(CreateUserDto.passWord ,saltOrRounds);
-
       return await this.usersCombinedService.createOneUserAndAcess({
-        data : CreateUserDto
+        data: CreateUserDto
       })
     } catch (error) {
       return error
     }
   }
 
-  @UseGuards( )
+  @UseGuards()
   @Post('/login')
   async login(
-    @Body() createUserDto:CreateUserDto,
+    @Body() createUserDto: CreateUserDto,
     @Request() { user }) {
     try {
+
       return this.authService.login(createUserDto);
     } catch (error) {
       throw error
@@ -73,28 +75,29 @@ export class UsersController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Get('profile/:_id')
+  @Get('profile/:userID')
   async findOne(
-    @Param() _id ,
+    @Param() userID : ParamUserDto,
     @Request() req
   ) {
     try {
-      console.log(_id);
-      return this.usersService.findOneUser(_id)
+
+      return this.usersService.findOneUser({_id:userID.userID})
     } catch (error) {
       throw error
     }
   }
 
   @UseGuards(JwtAuthGuard)
-  @Put('profile/:_id')
+  @Put('profile/:userID')
   async updateOne(
-    @Param() _id ,
-    @Body() data ,
+    @Param() userID : ParamUserDto,
+    @Body() data : DataUpdateUserDto,
     @Request() req
   ) {
     try {
-      return this.usersCombinedService.UpdateOneUserAndAcess({data,_id})
+      
+      return this.usersCombinedService.UpdateOneUserAndAcess({ data, query: { _id :userID.userID}})
     } catch (error) {
       throw error
     }

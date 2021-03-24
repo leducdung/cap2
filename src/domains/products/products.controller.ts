@@ -1,7 +1,11 @@
 import { Controller, Get, Request, Post, UseGuards,Body , Put , Param, Query , Delete} from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/jwt/jwt-auth.guard';
 import { AuthService } from '../../auth/auth.service';
-import { CreateProductDto } from './model/products.dto';
+import { CreateProductDto,
+FindManyProductDto,
+DataUpdateProductDto,
+ParamProductDto,
+ } from './model/products.dto';
 import { ApiTags } from '@nestjs/swagger'
 import { ProductsService } from './products.service';
 import * as bcrypt from 'bcrypt'
@@ -16,7 +20,7 @@ export class ProductsController {
   @UseGuards(JwtAuthGuard)
   @Get('')
   async findMany(
-    @Query() query,
+    @Query() query : FindManyProductDto,
     @Request() { req },
   ){
     try {
@@ -83,7 +87,7 @@ export class ProductsController {
   @Put(':productID')
   async updateOne(
     @Param() productID ,
-    @Body() data ,
+    @Body() data : DataUpdateProductDto,
     @Request() req
   ) {
     try {

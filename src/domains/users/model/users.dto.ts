@@ -1,6 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
 import { Types } from 'mongoose'
 import { sortDirection , SortDirection } from '../../../constains/common'
+import { UserRole, UserStatus, Gender } from '../../../constains/common';
 
 export enum SortBy {
   id = '_id',
@@ -26,7 +27,7 @@ export class CreateUserDto {
   @ApiPropertyOptional()
   readonly fullName?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:Gender})
   readonly gender?: string
 
   @ApiPropertyOptional()
@@ -44,13 +45,13 @@ export class CreateUserDto {
   @ApiPropertyOptional()
   readonly googleID?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserStatus})
   readonly status?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserRole})
   readonly role?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserRole})
   readonly rolePending?: string
 }
 
@@ -70,19 +71,19 @@ export class DataUpdateUserDto {
   @ApiPropertyOptional()
   readonly email?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:Gender})
   readonly gender?: string
 
   @ApiPropertyOptional()
   readonly phone?: number
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserStatus})
   readonly status?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserRole})
   readonly role?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserRole})
   readonly rolePending?: string
 }
 
@@ -110,7 +111,7 @@ export class FindManyDocumentsDto {
   @ApiPropertyOptional()
   readonly userName?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:Gender})
   readonly gender?: string
 
   @ApiPropertyOptional()
@@ -140,12 +141,12 @@ export class FindManyDocumentsDto {
   @ApiPropertyOptional()
   readonly googleID?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserStatus})
   readonly status?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserRole})
   readonly rolePending?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserRole})
   readonly role?: string
 }

@@ -1,7 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
 import { Types } from 'mongoose'
 import { sortDirection , SortDirection } from '../../../constains/common'
-
+import { UserStatus, statusProduct, productsTag } from '../../../constains/common';
 export enum SortBy {
   id = '_id',
   title = 'title',
@@ -27,7 +27,13 @@ export class CreateProductDto {
   @ApiPropertyOptional()
   readonly nextWeight?: string
 
+  @ApiPropertyOptional({enum:statusProduct})
+  readonly status?: string
+
   @ApiPropertyOptional()
+  readonly tradeMark?: string
+
+  @ApiPropertyOptional({enum:productsTag})
   readonly tag?: string
 
   @ApiPropertyOptional()
@@ -42,6 +48,9 @@ export class CreateProductDto {
   @ApiPropertyOptional()
   readonly calories?: string
 
+  @ApiPropertyOptional({enum:UserStatus})
+  readonly statusAccount?: string
+
   @ApiPropertyOptional()
   readonly createdBy?: Types.ObjectId
 
@@ -51,6 +60,9 @@ export class CreateProductDto {
 }
 
 export class DataUpdateProductDto {
+  @ApiPropertyOptional({enum:UserStatus})
+  readonly statusAccount?: string
+
   @ApiPropertyOptional()
   readonly name?: string
 
@@ -69,7 +81,7 @@ export class DataUpdateProductDto {
   @ApiPropertyOptional()
   readonly nextWeight?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:productsTag})
   readonly tag?: string
 
   @ApiPropertyOptional()
@@ -83,6 +95,12 @@ export class DataUpdateProductDto {
 
   @ApiPropertyOptional()
   readonly calories?: string
+
+  @ApiPropertyOptional({enum:statusProduct})
+  readonly status?: string
+
+  @ApiPropertyOptional()
+  readonly tradeMark?: string
 }
 
 export class ParamProductDto {
@@ -127,7 +145,7 @@ export class FindManyProductDto {
   @ApiPropertyOptional()
   readonly nextWeight?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:productsTag})
   readonly tag?: string
 
   @ApiPropertyOptional()
@@ -141,5 +159,13 @@ export class FindManyProductDto {
 
   @ApiPropertyOptional()
   readonly calories?: string
-  
+
+  @ApiPropertyOptional({enum:UserStatus})
+  readonly statusAccount?: string
+
+  @ApiPropertyOptional({enum:statusProduct})
+  readonly status?: string
+
+  @ApiPropertyOptional()
+  readonly tradeMark?: string
 }

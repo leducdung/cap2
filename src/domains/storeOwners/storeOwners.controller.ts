@@ -1,7 +1,11 @@
 import { Controller, Get, Request, Post, UseGuards,Body , Put , Param, Query , Delete} from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/jwt/jwt-auth.guard';
 import { AuthService } from '../../auth/auth.service';
-import { CreatestoreOwnerDto } from './model/storeOwners.dto';
+import { CreatestoreOwnerDto,
+FindManyStoreOwnersDto,
+DataUpdateStoreOwnerDto,
+ParamUserDto,
+} from './model/storeOwners.dto';
 import { ApiTags } from '@nestjs/swagger'
 import { StoreOwnersService } from './storeOwners.service';
 import * as bcrypt from 'bcrypt'
@@ -17,7 +21,7 @@ export class StoreOwnersController {
   @UseGuards(JwtAuthGuard)
   @Get('')
   async findMany(
-    @Query() query,
+    @Query() query : FindManyStoreOwnersDto,
     @Request() { req },
   ){
     try {
@@ -33,14 +37,14 @@ export class StoreOwnersController {
 
 
   @UseGuards(JwtAuthGuard)
-  @Get(':_id')
+  @Get(':storeOwnerID')
   async findOne(
-    @Param() _id ,
+    @Param() storeOwnerID ,
     @Request() req
   ) {
     try {
 
-      return this.storeOwnersService.findOneStoreOwner(_id)
+      return this.storeOwnersService.findOneStoreOwner({_id:storeOwnerID.storeOwnerID})
 
     } catch (error) {
       throw error
@@ -61,41 +65,43 @@ export class StoreOwnersController {
   }
 
   @UseGuards(JwtAuthGuard)
-  @Delete(':_id')
+  @Delete(':storeOwnerID')
   async Delete(
-    @Param() _id ,
+    @Param() storeOwnerID ,
     @Request() req
   ) {
     try {
-      return this.storeOwnersService.deleteOne(_id)
+      return this.storeOwnersService.deleteOne({_id:storeOwnerID})
     } catch (error) {
       throw error
     }
   }
 
   @UseGuards(JwtAuthGuard)
-  @Put(':_id')
+  @Put(':storeOwnerID')
   async updateOne(
-    @Param() _id ,
-    @Body() data ,
+    @Param() storeOwnerID ,
+    @Body() data: DataUpdateStoreOwnerDto,
     @Request() req
   ) {
     try {
-      return this.storeOwnersService.updateOne({data,_id})
+      return this.storeOwnersService.updateOne({data,query:{
+        _id:storeOwnerID.storeOwnerID
+      }})
     } catch (error) {
       throw error
     }
   }
 
   @UseGuards(JwtAuthGuard)
-  @Post(':_id/createEmployee')
+  @Post(':storeOwnerID/createEmployee')
   async createOneEmployee(
-    @Param() _id ,
+    @Param() storeOwnerID ,
     @Request() req,
   ) {
     try {
       return this.storeOwnersService.createAccountEmployee({
-       _id
+       storeOwnerID
       })
     } catch (error) {
       throw error

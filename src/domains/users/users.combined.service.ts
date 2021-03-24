@@ -41,10 +41,10 @@ export class UsersCombinedService {
     }
   }
 
-  async UpdateOneUserAndAcess({ data, _id }): Promise<Users | any> {
+  async UpdateOneUserAndAcess({ data, query }): Promise<Users | any> {
     try {
-
-      const user = await this.usersService.findOneUser(_id)
+      console.log(data);
+      const user = await this.usersService.findOneUser(query)
 
       if (data.passWord) {
         const saltOrRounds = await 10;
@@ -55,31 +55,31 @@ export class UsersCombinedService {
           data: {
             passWord: hash,
           },
-          _id
+          query
         })
       }
 
       if (!data.passWord) {
         await this.usersService.updateOne({
-          data, _id
+          data, query
         })
       }
 
       if (data.rolePending === 'STOREOWNER' && data.rolePending != user.role) {
         await this.storeOwnersService.updateOne({
           data: { status: 'PENDING' },
-          _id: user.storeOwnerID
+          query: { _id: user.storeOwnerID }
         })
       }
 
       if (data.role === 'STOREOWNER') {
         await this.storeOwnersService.updateOne({
           data: { status: 'NOSTATUS' },
-          _id: user.storeOwnerID
+          query: { _id: user.storeOwnerID }
         })
       }
 
-      const userUpdated = await this.usersService.findOneUser(_id)
+      const userUpdated = await this.usersService.findOneUser(query)
 
       return await userUpdated
     } catch (error) {

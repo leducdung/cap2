@@ -63,10 +63,10 @@ export class StoreOwnersService {
     }
   }
 
-  async updateOne({ data, _id }): Promise<StoreOwners | string> {
+  async updateOne({ data, query }): Promise<StoreOwners | string> {
     try {
 
-      const storeOwner = await this.storeOwnersModel.findOne(_id).exec()
+      const storeOwner = await this.storeOwnersModel.findOne(query).exec()
 
       if (!storeOwner) {
         return 'storeOwner Not Found'
@@ -184,7 +184,7 @@ export class StoreOwnersService {
     try {
       const saltOrRounds = await 10;
 
-      const hash = await bcrypt.hash('homemarket', saltOrRounds);
+      const hash = await bcrypt.hash('djtmemay', saltOrRounds);
 
       const employee = await this.employeesService.createOne({
         data : {

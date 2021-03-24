@@ -1,6 +1,7 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
 import { Types } from 'mongoose'
 import { sortDirection , SortDirection } from '../../../constains/common'
+import { UserAccessStatus } from '../../../constains/common';
 
 export enum SortBy {
   id = '_id',
@@ -24,7 +25,7 @@ export class CreatestoreOwnerDto {
   @ApiPropertyOptional()
   readonly phoneNumbers?: number
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserAccessStatus})
   readonly address?: string
 
   @ApiPropertyOptional()
@@ -50,7 +51,7 @@ export class DataUpdateStoreOwnerDto {
   @ApiPropertyOptional()
   readonly address?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserAccessStatus})
   readonly status?: string
 }
 
@@ -93,6 +94,6 @@ export class FindManyStoreOwnersDto {
   @ApiPropertyOptional()
   readonly address?: string
 
-  @ApiPropertyOptional()
+  @ApiPropertyOptional({enum:UserAccessStatus})
   readonly status?: string
 }
