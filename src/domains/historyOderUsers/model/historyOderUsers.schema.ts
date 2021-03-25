@@ -17,4 +17,3 @@ export const NoticationsSchema = new mongoose.Schema({
 }, {
   timestamps: true,
 })
-
