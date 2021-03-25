@@ -30,7 +30,11 @@ async function bootstrap() {
       NoticationsModule,
     ],
   });
+
   SwaggerModule.setup('api', app, apiDocument);
+
+  app.enableCors()
+  
   await app.listen(process.env.PORT || 3000, function () {
     console.log('Server started.......');
   });

@@ -15,4 +15,3 @@ export interface Notications extends Document {
 }
 
 export const fieldNeedToUseRegex = ['title'];
-
