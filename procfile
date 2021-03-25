@@ -1,0 +1,2 @@
+web: node --inspect=8080 index.js
+web: npm run start:prod
