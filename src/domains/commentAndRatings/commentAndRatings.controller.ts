@@ -45,7 +45,6 @@ export class CommentAndRatingsController {
     @Request() req
   ) {
     try {
-      console.log(commentAndRatingID );
 
       return this.commentAndRatingsService.findProduct({_id:commentAndRatingID})
 
@@ -61,7 +60,6 @@ export class CommentAndRatingsController {
     @Param() productID : ParamCommentAndRatingDto,
     @Request() req
   ) {
-    console.log(req.user.resultUser);
 
     try {
       return this.commentAndRatingsService.createOne({

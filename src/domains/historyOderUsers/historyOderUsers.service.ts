@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose'
 export type User = any;
-import { Notications, fieldNeedToUseRegex } from './model/notications.interface';
+import { Notications, fieldNeedToUseRegex } from './model/historyOderUsers.interface';
 import { InjectModel } from '@nestjs/mongoose'
 import { getNextCursor } from '../../helpers/gets'
 import { buildFindingQuery } from '../../helpers/build'

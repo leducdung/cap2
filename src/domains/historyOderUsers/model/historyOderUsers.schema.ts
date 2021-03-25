@@ -12,9 +12,9 @@ export const NoticationsSchema = new mongoose.Schema({
   title: { type: String, default: null },
   clickAction: { type: String, default: null },
   isRead:{ type: Boolean, default: false },
-  event: { type: String , enum :EventNotification, default: EventNotification.ORDERED },
   receiverUID: [{ type: ObjectId, ref:  'Users'}],
   createdBy: { type: ObjectId, ref:  'Users'},
 }, {
   timestamps: true,
 })
+

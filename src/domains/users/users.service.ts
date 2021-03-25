@@ -11,7 +11,7 @@ import { buildFindingQuery } from '../../helpers/build'
 export class UsersService {
 
   constructor(
-    @InjectModel('user')
+    @InjectModel('Users')
     private readonly usersModel: Model<Users>,
   ) { }
 

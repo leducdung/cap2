@@ -32,7 +32,6 @@ export class CommentAndRatingsService {
 
   async findProduct(query): Promise<CommentAndRatings | string> {
     try {
-      console.log(query);
 
       const commentAndRating = await this.commentAndRatingModel.findOne(query).populate('storeOwnerID').exec()
 

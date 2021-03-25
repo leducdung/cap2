@@ -55,7 +55,6 @@ export class ProductsController {
     @Body() createProductDto : CreateProductDto,
     @Request() req
   ) {
-    console.log(req.user.resultUser);
 
     try {
       return this.productsService.createOne({

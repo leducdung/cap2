@@ -19,31 +19,31 @@ export class CreateProductDto {
   readonly photos?: string
 
   @ApiPropertyOptional()
-  readonly price?: string
+  readonly price?: Number
 
   @ApiPropertyOptional()
-  readonly origin?: number
+  readonly origin?: String
 
   @ApiPropertyOptional()
-  readonly nextWeight?: string
+  readonly nextWeight?: Number
 
   @ApiPropertyOptional({enum:statusProduct})
   readonly status?: string
 
   @ApiPropertyOptional()
-  readonly tradeMark?: string
+  readonly tradeMark?: Number
 
   @ApiPropertyOptional({enum:productsTag})
   readonly tag?: string
 
   @ApiPropertyOptional()
-  readonly inCard?: string
+  readonly inCard?: Boolean
 
   @ApiPropertyOptional()
-  readonly percentDiscount?: string
+  readonly percentDiscount?: Number
 
   @ApiPropertyOptional()
-  readonly quantitySold?: string
+  readonly quantitySold?: Number
 
   @ApiPropertyOptional()
   readonly calories?: string
@@ -60,9 +60,6 @@ export class CreateProductDto {
 }
 
 export class DataUpdateProductDto {
-  @ApiPropertyOptional({enum:UserStatus})
-  readonly statusAccount?: string
-
   @ApiPropertyOptional()
   readonly name?: string
 
@@ -73,34 +70,44 @@ export class DataUpdateProductDto {
   readonly photos?: string
 
   @ApiPropertyOptional()
-  readonly price?: string
+  readonly price?: Number
 
   @ApiPropertyOptional()
-  readonly origin?: number
+  readonly origin?: String
 
   @ApiPropertyOptional()
-  readonly nextWeight?: string
-
-  @ApiPropertyOptional({enum:productsTag})
-  readonly tag?: string
-
-  @ApiPropertyOptional()
-  readonly inCard?: string
-
-  @ApiPropertyOptional()
-  readonly percentDiscount?: string
-
-  @ApiPropertyOptional()
-  readonly quantitySold?: string
-
-  @ApiPropertyOptional()
-  readonly calories?: string
+  readonly nextWeight?: Number
 
   @ApiPropertyOptional({enum:statusProduct})
   readonly status?: string
 
   @ApiPropertyOptional()
-  readonly tradeMark?: string
+  readonly tradeMark?: Number
+
+  @ApiPropertyOptional({enum:productsTag})
+  readonly tag?: string
+
+  @ApiPropertyOptional()
+  readonly inCard?: Boolean
+
+  @ApiPropertyOptional()
+  readonly percentDiscount?: Number
+
+  @ApiPropertyOptional()
+  readonly quantitySold?: Number
+
+  @ApiPropertyOptional()
+  readonly calories?: string
+
+  @ApiPropertyOptional({enum:UserStatus})
+  readonly statusAccount?: string
+
+  @ApiPropertyOptional()
+  readonly createdBy?: Types.ObjectId
+
+  @ApiPropertyOptional()
+  readonly storeOwnerID?: Types.ObjectId
+
 }
 
 export class ParamProductDto {
@@ -137,25 +144,31 @@ export class FindManyProductDto {
   readonly photos?: string
 
   @ApiPropertyOptional()
-  readonly price?: string
+  readonly price?: Number
 
   @ApiPropertyOptional()
-  readonly origin?: number
+  readonly origin?: String
 
   @ApiPropertyOptional()
-  readonly nextWeight?: string
+  readonly nextWeight?: Number
+
+  @ApiPropertyOptional({enum:statusProduct})
+  readonly status?: string
+
+  @ApiPropertyOptional()
+  readonly tradeMark?: Number
 
   @ApiPropertyOptional({enum:productsTag})
   readonly tag?: string
 
   @ApiPropertyOptional()
-  readonly inCard?: string
+  readonly inCard?: Boolean
 
   @ApiPropertyOptional()
-  readonly percentDiscount?: string
+  readonly percentDiscount?: Number
 
   @ApiPropertyOptional()
-  readonly quantitySold?: string
+  readonly quantitySold?: Number
 
   @ApiPropertyOptional()
   readonly calories?: string
@@ -163,9 +176,6 @@ export class FindManyProductDto {
   @ApiPropertyOptional({enum:UserStatus})
   readonly statusAccount?: string
 
-  @ApiPropertyOptional({enum:statusProduct})
-  readonly status?: string
-
   @ApiPropertyOptional()
-  readonly tradeMark?: string
+  readonly createdBy?: Types.ObjectId
 }

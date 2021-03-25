@@ -32,7 +32,6 @@ export class ProductsService {
 
   async findProduct(query): Promise<Products | string> {
     try {
-      console.log(query);
 
       const product = await this.productModel.findOne(query).populate('storeOwnerID').exec()
 
@@ -61,7 +60,7 @@ export class ProductsService {
 
   async updateOne({ data, query}): Promise<Products | string> {
     try {
-      
+
       const product = await this.productModel.findOne(query).populate('storeOwnerID').exec()
 
 

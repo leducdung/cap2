@@ -43,7 +43,7 @@ export class UsersCombinedService {
 
   async UpdateOneUserAndAcess({ data, query }): Promise<Users | any> {
     try {
-      console.log(data);
+
       const user = await this.usersService.findOneUser(query)
 
       if (data.passWord) {

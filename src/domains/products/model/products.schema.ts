@@ -10,7 +10,7 @@ export const ProductsSchema = new mongoose.Schema({
   description: { type: String, default: null },
   photos: { type: String, default: null },
   price: { type: Number, default: null },
-  status: { type: Number, enum: statusProduct, default: statusProduct.STOCKING },
+  status: { type: String, enum: statusProduct, default: statusProduct.STOCKING },
   tradeMark: { type: String, default: null },
   origin: { type: String, default: null },
   nextWeight: { type: Number, default: null },

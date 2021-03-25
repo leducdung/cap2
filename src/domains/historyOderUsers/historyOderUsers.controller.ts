@@ -5,11 +5,11 @@ import { CreateNoticationDto,
     DataUpdateNoticationDto,
     ParamNoticationDto,
     FindNoticationDto,
-   } from './model/notications.dto';
+   } from './model/historyOderUsers.dto';
 import { ApiTags } from '@nestjs/swagger'
-import { NoticationsService } from './notications.service';
+import { NoticationsService } from './historyOderUsers.service';
 import * as bcrypt from 'bcrypt'
-import { Notications } from './model/notications.interface'
+import { Notications } from './model/historyOderUsers.interface'
 
 @ApiTags('notications')
 @Controller('')

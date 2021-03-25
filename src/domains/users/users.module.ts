@@ -12,7 +12,7 @@ import { EmployeesModule} from '../employees/employees.module';
 
 export const UsersModel = MongooseModule.forFeature([
   {
-    name: 'user',
+    name: 'Users',
     schema: UsersSchema,
   },
 ])
