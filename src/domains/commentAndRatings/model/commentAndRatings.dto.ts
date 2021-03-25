@@ -1,6 +1,6 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
-import { Types } from 'mongoose'
-import { sortDirection , SortDirection } from '../../../constains/common'
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Types } from 'mongoose';
+import { sortDirection, SortDirection } from '../../../constains/common';
 
 export enum SortBy {
   id = '_id',
@@ -10,94 +10,92 @@ export enum SortBy {
 }
 export class CreateCommentAndRatingDto {
   @ApiPropertyOptional()
-  readonly title?: string
+  readonly title?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly isFaborit?: number
+  readonly isFaborit?: number;
 
   @ApiPropertyOptional()
-  readonly rateStar?: number
+  readonly rateStar?: number;
 
   @ApiPropertyOptional()
-  readonly comment?: string
+  readonly comment?: string;
 
   @ApiPropertyOptional()
-  readonly createdBy?: Types.ObjectId
+  readonly createdBy?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly productID?: Types.ObjectId
-
+  readonly productID?: Types.ObjectId;
 }
 
 export class DataUpdateCommentAndRatingDto {
   @ApiPropertyOptional()
-  readonly title?: string
+  readonly title?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly isFaborit?: number
+  readonly isFaborit?: number;
 
   @ApiPropertyOptional()
-  readonly rateStar?: number
+  readonly rateStar?: number;
 
   @ApiPropertyOptional()
-  readonly comment?: string
+  readonly comment?: string;
 
   @ApiPropertyOptional()
-  readonly createdBy?: Types.ObjectId
+  readonly createdBy?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly productID?: Types.ObjectId
+  readonly productID?: Types.ObjectId;
 }
 
 export class ParamCommentAndRatingDto {
   @ApiPropertyOptional()
-  readonly commentAndRatingID?: Types.ObjectId
+  readonly commentAndRatingID?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly productID?: Types.ObjectId
+  readonly productID?: Types.ObjectId;
 }
 
 export class FindCommentAndRatingDto {
   @ApiPropertyOptional({ enum: SortBy })
-  readonly sortBy?: SortBy = SortBy.id
+  readonly sortBy?: SortBy = SortBy.id;
 
   @ApiPropertyOptional({ enum: sortDirection })
-  readonly sortDirection?: SortDirection = SortDirection.asc
+  readonly sortDirection?: SortDirection = SortDirection.asc;
 
   @ApiPropertyOptional()
-  readonly limit?: number
+  readonly limit?: number;
 
   @ApiPropertyOptional()
-  readonly offset?: number
+  readonly offset?: number;
 
   @ApiPropertyOptional()
-  readonly cursor?: string
+  readonly cursor?: string;
 
   @ApiPropertyOptional()
-  readonly title?: string
+  readonly title?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly isFaborit?: number
+  readonly isFaborit?: number;
 
   @ApiPropertyOptional()
-  readonly rateStar?: number
+  readonly rateStar?: number;
 
   @ApiPropertyOptional()
-  readonly comment?: string
+  readonly comment?: string;
 
   @ApiPropertyOptional()
-  readonly createdBy?: Types.ObjectId
+  readonly createdBy?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly productID?: Types.ObjectId
-
+  readonly productID?: Types.ObjectId;
 }

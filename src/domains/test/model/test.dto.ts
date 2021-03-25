@@ -9,5 +9,4 @@ export class CreateUserDto {
 
   @ApiProperty()
   breed: string;
-
 }

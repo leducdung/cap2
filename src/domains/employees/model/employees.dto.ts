@@ -1,6 +1,6 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
-import { Types } from 'mongoose'
-import { sortDirection , SortDirection } from '../../../constains/common'
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Types } from 'mongoose';
+import { sortDirection, SortDirection } from '../../../constains/common';
 
 export enum SortBy {
   id = '_id',
@@ -10,86 +10,83 @@ export enum SortBy {
 }
 export class CreateEmployeeDto {
   @ApiPropertyOptional()
-  readonly fullName?: string
+  readonly fullName?: string;
 
   @ApiPropertyOptional()
-  readonly photos?: string
+  readonly photos?: string;
 
   @ApiPropertyOptional()
-  readonly email?: string
+  readonly email?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly phoneNumbers?: number
+  readonly phoneNumbers?: number;
 
   @ApiPropertyOptional()
-  readonly address?: string
-
+  readonly address?: string;
 }
 
 export class DataUpdateEmployeeDto {
   @ApiPropertyOptional()
-  readonly fullName?: string
+  readonly fullName?: string;
 
   @ApiPropertyOptional()
-  readonly photos?: string
+  readonly photos?: string;
 
   @ApiPropertyOptional()
-  readonly email?: string
+  readonly email?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly phoneNumbers?: number
+  readonly phoneNumbers?: number;
 
   @ApiPropertyOptional()
-  readonly address?: string
+  readonly address?: string;
 }
 
 export class ParamEmployeeDto {
   @ApiPropertyOptional()
-  readonly storeOwnerID?: Types.ObjectId
+  readonly storeOwnerID?: Types.ObjectId;
 }
 
 export class FindManyEmployeeDto {
   @ApiPropertyOptional({ enum: SortBy })
-  readonly sortBy?: SortBy = SortBy.id
+  readonly sortBy?: SortBy = SortBy.id;
 
   @ApiPropertyOptional({ enum: sortDirection })
-  readonly sortDirection?: SortDirection = SortDirection.asc
+  readonly sortDirection?: SortDirection = SortDirection.asc;
 
   @ApiPropertyOptional()
-  readonly limit?: number
+  readonly limit?: number;
 
   @ApiPropertyOptional()
-  readonly storeOwnerID?: Types.ObjectId
+  readonly storeOwnerID?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly offset?: number
+  readonly offset?: number;
 
   @ApiPropertyOptional()
-  readonly cursor?: string
+  readonly cursor?: string;
 
   @ApiPropertyOptional()
-  readonly fullName?: string
+  readonly fullName?: string;
 
   @ApiPropertyOptional()
-  readonly photos?: string
+  readonly photos?: string;
 
   @ApiPropertyOptional()
-  readonly email?: string
+  readonly email?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly phoneNumbers?: number
+  readonly phoneNumbers?: number;
 
   @ApiPropertyOptional()
-  readonly address?: string
-
-
+  readonly address?: string;
 }

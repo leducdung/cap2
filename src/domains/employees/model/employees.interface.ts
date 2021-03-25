@@ -1,16 +1,14 @@
-
-
-import { Document } from 'mongoose'
+import { Document } from 'mongoose';
 
 export interface Employees extends Document {
-  fullName?: string
-  photos?: string
-  email?: string
-  description?: string
-  phoneNumber?: number
-  address?: string
-  createdAt?: Date
-  updatedAt?: Date
+  fullName?: string;
+  photos?: string;
+  email?: string;
+  description?: string;
+  phoneNumber?: number;
+  address?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
-export const fieldNeedToUseRegex = ['name']
+export const fieldNeedToUseRegex = ['name'];

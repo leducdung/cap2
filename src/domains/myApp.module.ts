@@ -1,5 +1,5 @@
-import { forwardRef, Module } from '@nestjs/common'
-import { TestModule } from './test/test.module'
+import { forwardRef, Module } from '@nestjs/common';
+import { TestModule } from './test/test.module';
 import { ConfigModule } from '@nestjs/config';
 import { OAuthGoogleModule } from './o-auth-google/o-auth-google.module';
 import { UsersModule } from './users/users.module';
@@ -21,10 +21,9 @@ export const myAppImPortModules = [
   forwardRef(() => ProductsModule),
   forwardRef(() => CommentAndRatingsModule),
   forwardRef(() => NoticationsModule),
-
-]
+];
 
 @Module({
   imports: myAppImPortModules,
 })
-export class MyAppModule { }
+export class MyAppModule {}

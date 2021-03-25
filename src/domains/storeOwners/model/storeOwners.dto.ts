@@ -1,6 +1,6 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
-import { Types } from 'mongoose'
-import { sortDirection , SortDirection } from '../../../constains/common'
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Types } from 'mongoose';
+import { sortDirection, SortDirection } from '../../../constains/common';
 import { UserAccessStatus } from '../../../constains/common';
 
 export enum SortBy {
@@ -11,89 +11,89 @@ export enum SortBy {
 }
 export class CreatestoreOwnerDto {
   @ApiPropertyOptional()
-  readonly name?: string
+  readonly name?: string;
 
   @ApiPropertyOptional()
-  readonly photos?: string
+  readonly photos?: string;
 
   @ApiPropertyOptional()
-  readonly email?: string
+  readonly email?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly phoneNumbers?: number
+  readonly phoneNumbers?: number;
 
-  @ApiPropertyOptional({enum:UserAccessStatus})
-  readonly address?: string
+  @ApiPropertyOptional({ enum: UserAccessStatus })
+  readonly address?: string;
 
   @ApiPropertyOptional()
-  readonly status?: string
+  readonly status?: string;
 }
 
 export class DataUpdateStoreOwnerDto {
   @ApiPropertyOptional()
-  readonly name?: string
+  readonly name?: string;
 
   @ApiPropertyOptional()
-  readonly photos?: string
+  readonly photos?: string;
 
   @ApiPropertyOptional()
-  readonly email?: string
+  readonly email?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly phoneNumbers?: number
+  readonly phoneNumbers?: number;
 
   @ApiPropertyOptional()
-  readonly address?: string
+  readonly address?: string;
 
-  @ApiPropertyOptional({enum:UserAccessStatus})
-  readonly status?: string
+  @ApiPropertyOptional({ enum: UserAccessStatus })
+  readonly status?: string;
 }
 
 export class ParamUserDto {
   @ApiPropertyOptional()
-  readonly storeOwnerID?: Types.ObjectId
+  readonly storeOwnerID?: Types.ObjectId;
 }
 
 export class FindManyStoreOwnersDto {
   @ApiPropertyOptional({ enum: SortBy })
-  readonly sortBy?: SortBy = SortBy.id
+  readonly sortBy?: SortBy = SortBy.id;
 
   @ApiPropertyOptional({ enum: sortDirection })
-  readonly sortDirection?: SortDirection = SortDirection.asc
+  readonly sortDirection?: SortDirection = SortDirection.asc;
 
   @ApiPropertyOptional()
-  readonly limit?: number
+  readonly limit?: number;
 
   @ApiPropertyOptional()
-  readonly offset?: number
+  readonly offset?: number;
 
   @ApiPropertyOptional()
-  readonly cursor?: string
+  readonly cursor?: string;
 
   @ApiPropertyOptional()
-  readonly name?: string
+  readonly name?: string;
 
   @ApiPropertyOptional()
-  readonly photos?: string
+  readonly photos?: string;
 
   @ApiPropertyOptional()
-  readonly email?: string
+  readonly email?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly phoneNumbers?: number
+  readonly phoneNumbers?: number;
 
   @ApiPropertyOptional()
-  readonly address?: string
+  readonly address?: string;
 
-  @ApiPropertyOptional({enum:UserAccessStatus})
-  readonly status?: string
+  @ApiPropertyOptional({ enum: UserAccessStatus })
+  readonly status?: string;
 }

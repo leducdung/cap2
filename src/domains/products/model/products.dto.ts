@@ -1,7 +1,11 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
-import { Types } from 'mongoose'
-import { sortDirection , SortDirection } from '../../../constains/common'
-import { UserStatus, statusProduct, productsTag } from '../../../constains/common';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Types } from 'mongoose';
+import { sortDirection, SortDirection } from '../../../constains/common';
+import {
+  UserStatus,
+  statusProduct,
+  productsTag,
+} from '../../../constains/common';
 export enum SortBy {
   id = '_id',
   title = 'title',
@@ -10,172 +14,170 @@ export enum SortBy {
 }
 export class CreateProductDto {
   @ApiPropertyOptional()
-  readonly name?: string
+  readonly name?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly photos?: string
+  readonly photos?: string;
 
   @ApiPropertyOptional()
-  readonly price?: Number
+  readonly price?: number;
 
   @ApiPropertyOptional()
-  readonly origin?: String
+  readonly origin?: string;
 
   @ApiPropertyOptional()
-  readonly nextWeight?: Number
+  readonly nextWeight?: number;
 
-  @ApiPropertyOptional({enum:statusProduct})
-  readonly status?: string
-
-  @ApiPropertyOptional()
-  readonly tradeMark?: Number
-
-  @ApiPropertyOptional({enum:productsTag})
-  readonly tag?: string
+  @ApiPropertyOptional({ enum: statusProduct })
+  readonly status?: string;
 
   @ApiPropertyOptional()
-  readonly inCard?: Boolean
+  readonly tradeMark?: number;
+
+  @ApiPropertyOptional({ enum: productsTag })
+  readonly tag?: string;
 
   @ApiPropertyOptional()
-  readonly percentDiscount?: Number
+  readonly inCard?: boolean;
 
   @ApiPropertyOptional()
-  readonly quantitySold?: Number
+  readonly percentDiscount?: number;
 
   @ApiPropertyOptional()
-  readonly calories?: string
-
-  @ApiPropertyOptional({enum:UserStatus})
-  readonly statusAccount?: string
+  readonly quantitySold?: number;
 
   @ApiPropertyOptional()
-  readonly createdBy?: Types.ObjectId
+  readonly calories?: string;
+
+  @ApiPropertyOptional({ enum: UserStatus })
+  readonly statusAccount?: string;
 
   @ApiPropertyOptional()
-  readonly storeOwnerID?: Types.ObjectId
+  readonly createdBy?: Types.ObjectId;
 
+  @ApiPropertyOptional()
+  readonly storeOwnerID?: Types.ObjectId;
 }
 
 export class DataUpdateProductDto {
   @ApiPropertyOptional()
-  readonly name?: string
+  readonly name?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly photos?: string
+  readonly photos?: string;
 
   @ApiPropertyOptional()
-  readonly price?: Number
+  readonly price?: number;
 
   @ApiPropertyOptional()
-  readonly origin?: String
+  readonly origin?: string;
 
   @ApiPropertyOptional()
-  readonly nextWeight?: Number
+  readonly nextWeight?: number;
 
-  @ApiPropertyOptional({enum:statusProduct})
-  readonly status?: string
-
-  @ApiPropertyOptional()
-  readonly tradeMark?: Number
-
-  @ApiPropertyOptional({enum:productsTag})
-  readonly tag?: string
+  @ApiPropertyOptional({ enum: statusProduct })
+  readonly status?: string;
 
   @ApiPropertyOptional()
-  readonly inCard?: Boolean
+  readonly tradeMark?: number;
+
+  @ApiPropertyOptional({ enum: productsTag })
+  readonly tag?: string;
 
   @ApiPropertyOptional()
-  readonly percentDiscount?: Number
+  readonly inCard?: boolean;
 
   @ApiPropertyOptional()
-  readonly quantitySold?: Number
+  readonly percentDiscount?: number;
 
   @ApiPropertyOptional()
-  readonly calories?: string
-
-  @ApiPropertyOptional({enum:UserStatus})
-  readonly statusAccount?: string
+  readonly quantitySold?: number;
 
   @ApiPropertyOptional()
-  readonly createdBy?: Types.ObjectId
+  readonly calories?: string;
+
+  @ApiPropertyOptional({ enum: UserStatus })
+  readonly statusAccount?: string;
 
   @ApiPropertyOptional()
-  readonly storeOwnerID?: Types.ObjectId
+  readonly createdBy?: Types.ObjectId;
 
+  @ApiPropertyOptional()
+  readonly storeOwnerID?: Types.ObjectId;
 }
 
 export class ParamProductDto {
   @ApiPropertyOptional()
-  readonly productID?: Types.ObjectId
+  readonly productID?: Types.ObjectId;
 }
 
 export class FindManyProductDto {
   @ApiPropertyOptional({ enum: SortBy })
-  readonly sortBy?: SortBy = SortBy.id
+  readonly sortBy?: SortBy = SortBy.id;
 
   @ApiPropertyOptional({ enum: sortDirection })
-  readonly sortDirection?: SortDirection = SortDirection.asc
+  readonly sortDirection?: SortDirection = SortDirection.asc;
 
   @ApiPropertyOptional()
-  readonly limit?: number
+  readonly limit?: number;
 
   @ApiPropertyOptional()
-  readonly storeOwnerID?: Types.ObjectId
+  readonly storeOwnerID?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly offset?: number
+  readonly offset?: number;
 
   @ApiPropertyOptional()
-  readonly cursor?: string
+  readonly cursor?: string;
 
   @ApiPropertyOptional()
-  readonly name?: string
+  readonly name?: string;
 
   @ApiPropertyOptional()
-  readonly description?: string
+  readonly description?: string;
 
   @ApiPropertyOptional()
-  readonly photos?: string
+  readonly photos?: string;
 
   @ApiPropertyOptional()
-  readonly price?: Number
+  readonly price?: number;
 
   @ApiPropertyOptional()
-  readonly origin?: String
+  readonly origin?: string;
 
   @ApiPropertyOptional()
-  readonly nextWeight?: Number
+  readonly nextWeight?: number;
 
-  @ApiPropertyOptional({enum:statusProduct})
-  readonly status?: string
-
-  @ApiPropertyOptional()
-  readonly tradeMark?: Number
-
-  @ApiPropertyOptional({enum:productsTag})
-  readonly tag?: string
+  @ApiPropertyOptional({ enum: statusProduct })
+  readonly status?: string;
 
   @ApiPropertyOptional()
-  readonly inCard?: Boolean
+  readonly tradeMark?: number;
+
+  @ApiPropertyOptional({ enum: productsTag })
+  readonly tag?: string;
 
   @ApiPropertyOptional()
-  readonly percentDiscount?: Number
+  readonly inCard?: boolean;
 
   @ApiPropertyOptional()
-  readonly quantitySold?: Number
+  readonly percentDiscount?: number;
 
   @ApiPropertyOptional()
-  readonly calories?: string
-
-  @ApiPropertyOptional({enum:UserStatus})
-  readonly statusAccount?: string
+  readonly quantitySold?: number;
 
   @ApiPropertyOptional()
-  readonly createdBy?: Types.ObjectId
+  readonly calories?: string;
+
+  @ApiPropertyOptional({ enum: UserStatus })
+  readonly statusAccount?: string;
+
+  @ApiPropertyOptional()
+  readonly createdBy?: Types.ObjectId;
 }

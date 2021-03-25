@@ -1,7 +1,11 @@
-import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger'
-import { Types } from 'mongoose'
-import { sortDirection , SortDirection } from '../../../constains/common'
-import { UserStatus, UserRole, EventNotification } from '../../../constains/common'
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { Types } from 'mongoose';
+import { sortDirection, SortDirection } from '../../../constains/common';
+import {
+  UserStatus,
+  UserRole,
+  EventNotification,
+} from '../../../constains/common';
 
 export enum SortBy {
   id = '_id',
@@ -11,109 +15,107 @@ export enum SortBy {
 }
 export class CreateNoticationDto {
   @ApiPropertyOptional()
-  readonly productID?: Types.ObjectId
+  readonly productID?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly commentAndRatingID?: Types.ObjectId
+  readonly commentAndRatingID?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly title?: string
+  readonly title?: string;
 
   @ApiPropertyOptional()
-  readonly body?: string
+  readonly body?: string;
 
   @ApiPropertyOptional()
-  readonly clickAction?: string
+  readonly clickAction?: string;
 
   @ApiPropertyOptional()
-  readonly isRead?: boolean
+  readonly isRead?: boolean;
 
-  @ApiPropertyOptional({enum:EventNotification})
-  readonly event?: string
-
-  @ApiPropertyOptional()
-  readonly receiverUID?: Types.ObjectId[]
+  @ApiPropertyOptional({ enum: EventNotification })
+  readonly event?: string;
 
   @ApiPropertyOptional()
-  readonly createdBy?: Types.ObjectId
+  readonly receiverUID?: Types.ObjectId[];
 
+  @ApiPropertyOptional()
+  readonly createdBy?: Types.ObjectId;
 }
 
 export class DataUpdateNoticationDto {
   @ApiPropertyOptional()
-  readonly productID?: Types.ObjectId
+  readonly productID?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly commentAndRatingID?: Types.ObjectId
+  readonly commentAndRatingID?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly title?: string
+  readonly title?: string;
 
   @ApiPropertyOptional()
-  readonly body?: string
+  readonly body?: string;
 
   @ApiPropertyOptional()
-  readonly clickAction?: string
+  readonly clickAction?: string;
 
   @ApiPropertyOptional()
-  readonly isRead?: boolean
+  readonly isRead?: boolean;
 
-  @ApiPropertyOptional({enum:EventNotification})
-  readonly event?: string
-
-  @ApiPropertyOptional()
-  readonly receiverUID?: Types.ObjectId[]
+  @ApiPropertyOptional({ enum: EventNotification })
+  readonly event?: string;
 
   @ApiPropertyOptional()
-  readonly createdBy?: Types.ObjectId
+  readonly receiverUID?: Types.ObjectId[];
+
+  @ApiPropertyOptional()
+  readonly createdBy?: Types.ObjectId;
 }
 
 export class ParamNoticationDto {
   @ApiPropertyOptional()
-  readonly notificationID?: Types.ObjectId
+  readonly notificationID?: Types.ObjectId;
 }
 
 export class FindNoticationDto {
   @ApiPropertyOptional({ enum: SortBy })
-  readonly sortBy?: SortBy = SortBy.id
+  readonly sortBy?: SortBy = SortBy.id;
 
   @ApiPropertyOptional({ enum: sortDirection })
-  readonly sortDirection?: SortDirection = SortDirection.asc
+  readonly sortDirection?: SortDirection = SortDirection.asc;
 
   @ApiPropertyOptional()
-  readonly limit?: number
+  readonly limit?: number;
 
   @ApiPropertyOptional()
-  readonly offset?: number
+  readonly offset?: number;
 
   @ApiPropertyOptional()
-  readonly cursor?: string
+  readonly cursor?: string;
 
   @ApiPropertyOptional()
-  readonly productID?: Types.ObjectId
+  readonly productID?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly commentAndRatingID?: Types.ObjectId
+  readonly commentAndRatingID?: Types.ObjectId;
 
   @ApiPropertyOptional()
-  readonly title?: string
+  readonly title?: string;
 
   @ApiPropertyOptional()
-  readonly body?: string
+  readonly body?: string;
 
   @ApiPropertyOptional()
-  readonly clickAction?: string
+  readonly clickAction?: string;
 
   @ApiPropertyOptional()
-  readonly isRead?: boolean
+  readonly isRead?: boolean;
 
-  @ApiPropertyOptional({enum:EventNotification})
-  readonly event?: string
-
-  @ApiPropertyOptional()
-  readonly receiverUID?: Types.ObjectId[]
+  @ApiPropertyOptional({ enum: EventNotification })
+  readonly event?: string;
 
   @ApiPropertyOptional()
-  readonly createdBy?: Types.ObjectId
+  readonly receiverUID?: Types.ObjectId[];
 
+  @ApiPropertyOptional()
+  readonly createdBy?: Types.ObjectId;
 }

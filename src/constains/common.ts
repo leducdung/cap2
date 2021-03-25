@@ -10,7 +10,7 @@ export enum UserStatus {
   UNLOCK = 'UNLOCK',
 }
 
-export enum UserRole{
+export enum UserRole {
   BASIC = 'BASIC',
   ADMIN = 'ADMIN',
   EMPLOYEE = 'EMPLOYEE',
@@ -37,7 +37,6 @@ export enum HistoryOderStoresStatus {
   FINISHED_COMPOSING = 'FINISHED_COMPOSING',
 }
 
-
 export enum HistoryOderUserStatus {
   COMPOSING = 'COMPOSING',
   FINISHED_COMPOSING = 'FINISHED_COMPOSING',
@@ -49,11 +48,11 @@ export enum statusProduct {
 }
 
 export enum productsTag {
-  POULTRY  = 'POULTRY',// gia cầm
-  BEEF_AND_PORK = 'BEEF_AND_PORK',// thịt bò thịt heo
+  POULTRY = 'POULTRY', // gia cầm
+  BEEF_AND_PORK = 'BEEF_AND_PORK', // thịt bò thịt heo
   VEGETABLE = 'VEGETABLE',
   SPICE = 'SPICE', // gia vị
-  FOOD= 'FOOD',
+  FOOD = 'FOOD',
 }
 
-export const sortDirection = [SortDirection.asc, SortDirection.desc]
+export const sortDirection = [SortDirection.asc, SortDirection.desc];

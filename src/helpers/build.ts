@@ -1,50 +1,58 @@
-import { Types } from 'mongoose'
+import { Types } from 'mongoose';
 
 const buildArrayObjectIds = (data: string | string[]) => {
   if (!data) {
-    return
+    return;
   }
 
   if (!Array.isArray(data)) {
-    return Types.ObjectId(data)
+    return Types.ObjectId(data);
   }
 
-  return data.map(each => Types.ObjectId(each))
-}
+  return data.map((each) => Types.ObjectId(each));
+};
 
-export const buildFindingQuery = ({ query, fieldNeedToUseRegex = [], convertToObjectIdFields = [] }) => {
-
-  const { sortBy = '_id', limit, cursor, sortDirection, ...findingQuery } = query
-  const validDirection: number = sortDirection === 'ASC' ? 1 : -1
-  const hasPage = !!limit
-  const sortingCondition = { [sortBy]: validDirection }
+export const buildFindingQuery = ({
+  query,
+  fieldNeedToUseRegex = [],
+  convertToObjectIdFields = [],
+}) => {
+  const {
+    sortBy = '_id',
+    limit,
+    cursor,
+    sortDirection,
+    ...findingQuery
+  } = query;
+  const validDirection: number = sortDirection === 'ASC' ? 1 : -1;
+  const hasPage = !!limit;
+  const sortingCondition = { [sortBy]: validDirection };
 
   for (const key in findingQuery) {
     if (!key) {
-      continue
+      continue;
     }
 
-    const shouldConvertToObjectId = convertToObjectIdFields.includes(key)
+    const shouldConvertToObjectId = convertToObjectIdFields.includes(key);
 
     if (shouldConvertToObjectId) {
-      findingQuery[key] = buildArrayObjectIds(findingQuery[key])
+      findingQuery[key] = buildArrayObjectIds(findingQuery[key]);
     }
 
     if (fieldNeedToUseRegex.includes(key)) {
-      findingQuery[key] = { $regex: findingQuery[key], $options: 'i' }
+      findingQuery[key] = { $regex: findingQuery[key], $options: 'i' };
 
-      continue
+      continue;
     }
 
     if (!Array.isArray(findingQuery[key])) {
-      continue
+      continue;
     }
 
-    findingQuery[key] = { $in: findingQuery[key] }
-
+    findingQuery[key] = { $in: findingQuery[key] };
   }
 
-  const findAllQuery = { ...findingQuery }
+  const findAllQuery = { ...findingQuery };
 
   if (!limit) {
     return {
@@ -52,7 +60,7 @@ export const buildFindingQuery = ({ query, fieldNeedToUseRegex = [], convertToOb
       findAllQuery,
       sortingCondition,
       hasPage,
-    }
+    };
   }
 
   if (!cursor) {
@@ -61,15 +69,15 @@ export const buildFindingQuery = ({ query, fieldNeedToUseRegex = [], convertToOb
       findingQuery,
       findAllQuery,
       hasPage,
-    }
+    };
   }
 
-  const condition = validDirection === 1 ? '$gt' : '$lt'
+  const condition = validDirection === 1 ? '$gt' : '$lt';
 
-  findingQuery[sortBy] = { [condition]: cursor }
+  findingQuery[sortBy] = { [condition]: cursor };
 
   if (convertToObjectIdFields.includes(sortBy)) {
-    findingQuery[sortBy] = { [condition]: Types.ObjectId(cursor) }
+    findingQuery[sortBy] = { [condition]: Types.ObjectId(cursor) };
   }
 
   return {
@@ -77,5 +85,5 @@ export const buildFindingQuery = ({ query, fieldNeedToUseRegex = [], convertToOb
     findingQuery,
     findAllQuery,
     hasPage,
-  }
-}
+  };
+};
